@@ -1,0 +1,257 @@
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  Scissors,
+  Hammer,
+  Trees,
+  Droplets,
+  Leaf,
+  PaintBucket,
+  Trash2,
+  TreeDeciduous,
+  HardHat,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
+
+import heroLawn from "@/assets/hero-lawn.jpg";
+import craft from "@/assets/craft.jpg";
+import logo from "@/assets/moore-logo.png";
+
+export const Route = createFileRoute("/")({
+  component: Home,
+});
+
+const services = [
+  ["Lawn Mowing", Scissors],
+  ["Landscaping", Trees],
+  ["Home Repair", Hammer],
+  ["Power Washing", Droplets],
+  ["Fall & Spring Cleanups", Leaf],
+  ["Fence & Deck Painting", PaintBucket],
+  ["Junk Removal", Trash2],
+  ["Tree Trimming", TreeDeciduous],
+  ["Small Construction", HardHat],
+];
+
+function Home() {
+  return (
+    <div className="min-h-screen bg-[#faf3e5] text-[#294321]">
+
+      {/* HEADER */}
+      <header className="bg-white flex justify-between items-center px-8 py-5 shadow">
+        <div className="flex items-center gap-4">
+          <img
+            src={logo}
+            className="w-20 h-20 rounded-full object-cover"
+          />
+
+          <div>
+            <h1 className="text-3xl font-bold text-orange-600">
+              Moore’s
+            </h1>
+            <h2 className="text-xl font-bold">
+              Lawn Care & Services LLC
+            </h2>
+            <p>
+              Quality Work. Reliable Service. Beautiful Results.
+            </p>
+          </div>
+        </div>
+
+
+        <div className="text-sm">
+          <p>📞 270-872-8835</p>
+          <p>✉ mooreslawncareetown@gmail.com</p>
+          <p>📍 Vine Grove, KY 40175</p>
+        </div>
+
+      </header>
+
+
+      {/* NAV */}
+      <nav className="bg-[#d9b878] py-4 text-center">
+        <a className="mx-5">HOME</a>
+        <a className="mx-5">SERVICES</a>
+        <a className="mx-5">ABOUT</a>
+        <a className="mx-5">CONTACT</a>
+      </nav>
+
+
+      {/* HERO */}
+      <section
+        className="h-[85vh] bg-cover bg-center flex items-end p-10"
+        style={{
+          backgroundImage:
+            `linear-gradient(#0008,#0005),url(${heroLawn})`,
+        }}
+      >
+
+        <div className="text-white max-w-xl">
+
+          <h1 className="text-6xl font-bold">
+            Your Property.
+            <br />
+            Our Pride.
+          </h1>
+
+          <p className="text-xl mt-5">
+            Professional lawn care and home services
+            you can count on.
+          </p>
+
+
+          <a
+            href="tel:2708728835"
+            className="inline-block mt-6 bg-[#355b28] px-8 py-3 rounded-full"
+          >
+            <Phone className="inline mr-2"/>
+            270-872-8835
+          </a>
+
+        </div>
+
+      </section>
+
+
+
+      {/* SERVICES */}
+
+      <section className="p-10">
+
+        <h2 className="text-4xl text-center font-bold mb-10">
+          Our Services
+        </h2>
+
+
+        <div className="grid md:grid-cols-3 gap-5">
+
+        {services.map(([name, Icon]) => {
+
+          const IconComponent = Icon as any;
+
+          return (
+
+          <div
+            className="bg-white rounded-xl p-6 shadow text-center"
+            key={name as string}
+          >
+
+            <IconComponent
+              className="mx-auto mb-4"
+              size={40}
+            />
+
+            <h3 className="text-xl font-bold">
+              {name}
+            </h3>
+
+          </div>
+
+          )
+
+        })}
+
+        </div>
+
+      </section>
+
+
+
+      {/* ABOUT */}
+
+      <section className="bg-[#355b28] text-white p-10 grid md:grid-cols-2 gap-10 items-center">
+
+        <img
+          src={craft}
+          className="rounded-xl"
+        />
+
+        <div>
+
+          <h2 className="text-4xl font-bold">
+            Built on hard work and trust.
+          </h2>
+
+          <p className="mt-5 text-lg">
+            Moore’s Lawn Care & Services LLC provides
+            reliable property services throughout Hardin County,
+            Kentucky.
+          </p>
+
+        </div>
+
+
+      </section>
+
+
+
+      {/* AREAS */}
+
+      <section className="p-10 text-center">
+
+        <h2 className="text-4xl font-bold">
+          Service Areas
+        </h2>
+
+        <p className="mt-5 text-lg">
+          Rineyville KY • Glendale KY • Elizabethtown KY
+          • Radcliff KY • Vine Grove KY
+        </p>
+
+      </section>
+
+
+
+      {/* CONTACT */}
+
+      <section className="bg-[#ead09d] p-10 text-center">
+
+        <h2 className="text-4xl font-bold">
+          Request A Free Quote
+        </h2>
+
+
+        <p className="mt-5">
+          Call or email today!
+        </p>
+
+
+        <div className="mt-6">
+
+          <p>
+            <Phone className="inline"/>
+            270-872-8835
+          </p>
+
+
+          <p>
+            <Mail className="inline"/>
+            mooreslawncareetown@gmail.com
+          </p>
+
+
+          <p>
+            <MapPin className="inline"/>
+            Vine Grove, KY
+          </p>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <footer className="bg-[#294321] text-white text-center p-5">
+
+        © {new Date().getFullYear()}
+        Moore’s Lawn Care & Services LLC
+
+      </footer>
+
+
+    </div>
+  );
+}
